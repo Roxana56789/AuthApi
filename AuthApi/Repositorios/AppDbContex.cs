@@ -5,6 +5,8 @@ namespace AuthApi.Repositorios
 {
     public class AppDbContext : DbContext
     {
+        internal object CategoriasRJ;
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
