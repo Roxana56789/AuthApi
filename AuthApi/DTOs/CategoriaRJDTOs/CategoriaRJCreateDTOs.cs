@@ -1,4 +1,4 @@
-﻿namespace RestauranteMariscos.DTOs
+﻿namespace AuthApi.DTOs
 {
     public class CategoriaRJCreateDto
     {

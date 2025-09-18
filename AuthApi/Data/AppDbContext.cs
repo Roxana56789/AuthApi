@@ -1,24 +1,34 @@
 ﻿using AuthApi.Entidades;
 using Microsoft.EntityFrameworkCore;
-using RestauranteMariscos.Entidades;
 
-namespace RestauranteMariscos.Data
+
+namespace AuthApi.Repositorios
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options)
-            : base(options)
+
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 
-        // Tu tabla de usuarios
         public DbSet<Usuario> Usuarios { get; set; }
-
-        // Tu tabla de roles
+        public DbSet<CategoriaRJ> Categoria { get; set; }
         public DbSet<Rol> Roles { get; set; }
 
-        // Tu tabla de categorías
-        public DbSet<CategoriaRJ> CategoriasRJ { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Email único
+            modelBuilder.Entity<Usuario>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+
+            // Relación 1 Rol -> N Usuarios
+            modelBuilder.Entity<Usuario>()
+                .HasOne(u => u.Rol)
+                .WithMany(r => r.Usuarios)
+                .HasForeignKey(u => u.RolId);
+        }
     }
 }
-

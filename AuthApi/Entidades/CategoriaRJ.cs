@@ -1,4 +1,4 @@
-﻿namespace RestauranteMariscos.Entidades
+﻿namespace AuthApi.Entidades
 {
     public class CategoriaRJ
     {

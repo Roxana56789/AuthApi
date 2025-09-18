@@ -1,8 +1,8 @@
-﻿using RestauranteMariscos.DTOs;
-using RestauranteMariscos.Entidades;
-using RestauranteMariscos.Interfaces;
+﻿using AuthApi.DTOs;
+using AuthApi.Entidades;
+using AuthApi.Interfaces;
 
-namespace RestauranteMariscos.Servicios
+namespace AuthApi.Servicios
 {
     public class CategoriaRJService 
     {

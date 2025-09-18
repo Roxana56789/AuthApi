@@ -1,20 +1,22 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RestauranteMariscos.DTOs;
-using RestauranteMariscos.Interfaces;
+using AuthApi.DTOs;
+using AuthApi.Interfaces;
+using AuthApi.Servicios;
 
-namespace RestauranteMariscos.Controllers
+namespace AuthApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     [Authorize] // 🔒 protege todos los endpoints
     public class CategoriaRJController : ControllerBase
     {
-        private readonly ICategoriaRJService _service;
+        private readonly CategoriaRJService _service;
 
-        public CategoriaRJController(ICategoriaRJService service)
+        // ✅ Constructor que inyecta el servicio
+        public CategoriaRJController(CategoriaRJService service)
         {
-            _service = service;
+            _service = service ?? throw new ArgumentNullException(nameof(service));
         }
 
         // GET: api/CategoriaRJ

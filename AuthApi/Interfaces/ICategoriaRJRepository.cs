@@ -1,8 +1,9 @@
-﻿using RestauranteMariscos.Entidades;
+﻿using AuthApi.Entidades;
 
-namespace RestauranteMariscos.Interfaces
+namespace AuthApi.Interfaces
 {
     public interface ICategoriaRJRepository
+
     {
         Task<IEnumerable<CategoriaRJ>> GetAllAsync();
         Task<CategoriaRJ?> GetByIdAsync(int id);

@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RestauranteMariscos.Data;
-using RestauranteMariscos.Entidades;
-using RestauranteMariscos.Interfaces;
+using AuthApi.Interfaces;
+using AuthApi.Entidades;
 
-namespace RestauranteMariscos.Repositorios
+namespace AuthApi.Repositorios
 {
     public class CategoriaRJRepository : ICategoriaRJRepository
+
     {
         private readonly AppDbContext _context;
 
@@ -14,24 +14,24 @@ namespace RestauranteMariscos.Repositorios
             _context = context;
         }
 
-        public async Task<IEnumerable<CategoriaRJ>> GetAllAsync()
+        public async Task<IEnumerable<AuthApi.Entidades.CategoriaRJ>> GetAllAsync()
         {
-            return await _context.CategoriasRJ.ToListAsync();
+            return await _context.Categoria.ToListAsync();
         }
 
         public async Task<CategoriaRJ?> GetByIdAsync(int id)
         {
-            return await _context.CategoriasRJ.FindAsync(id);
+            return await _context.Categoria.FindAsync(id);
         }
 
         public async Task AddAsync(CategoriaRJ categoria)
         {
-            await _context.CategoriasRJ.AddAsync(categoria);
+            await _context.Categoria.AddAsync(categoria);
         }
 
         public async Task UpdateAsync(CategoriaRJ categoria)
         {
-            _context.CategoriasRJ.Update(categoria);
+            _context.Categoria.Update(categoria);
         }
 
         public async Task DeleteAsync(int id)
@@ -39,7 +39,7 @@ namespace RestauranteMariscos.Repositorios
             var categoria = await GetByIdAsync(id);
             if (categoria != null)
             {
-                _context.CategoriasRJ.Remove(categoria);
+                _context.Categoria.Remove(categoria);
             }
         }
 
@@ -47,6 +47,18 @@ namespace RestauranteMariscos.Repositorios
         {
             return await _context.SaveChangesAsync() > 0;
         }
+
+        Task<IEnumerable<CategoriaRJ>> ICategoriaRJRepository.GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<CategoriaRJ?> ICategoriaRJRepository.GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        
     }
 }
 
