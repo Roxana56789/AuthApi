@@ -1,5 +1,6 @@
 ﻿using AuthApi.Interfaces;
 using AuthApi.Repositorios;
+using AuthApi.Servicios;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -20,6 +21,9 @@ builder.Services.AddDbContext<AppDbContext>((serviceProvider, options) =>
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IAuthService, AuthRepository>();
 builder.Services.AddScoped<ICategoriaRJRepository, CategoriaRJRepository>();
+builder.Services.AddScoped<CategoriaRJService>();
+
+
 
 // JWT
 builder.Services.AddAuthentication("Bearer")

@@ -5,7 +5,6 @@ using AuthApi.Entidades;
 namespace AuthApi.Repositorios
 {
     public class CategoriaRJRepository : ICategoriaRJRepository
-
     {
         private readonly AppDbContext _context;
 
@@ -14,7 +13,7 @@ namespace AuthApi.Repositorios
             _context = context;
         }
 
-        public async Task<IEnumerable<AuthApi.Entidades.CategoriaRJ>> GetAllAsync()
+        public async Task<IEnumerable<CategoriaRJ>> GetAllAsync()
         {
             return await _context.Categoria.ToListAsync();
         }
@@ -47,18 +46,5 @@ namespace AuthApi.Repositorios
         {
             return await _context.SaveChangesAsync() > 0;
         }
-
-        Task<IEnumerable<CategoriaRJ>> ICategoriaRJRepository.GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<CategoriaRJ?> ICategoriaRJRepository.GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        
     }
 }
-
