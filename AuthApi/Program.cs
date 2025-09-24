@@ -23,8 +23,6 @@ builder.Services.AddScoped<IAuthService, AuthRepository>();
 builder.Services.AddScoped<ICategoriaRJRepository, CategoriaRJRepository>();
 builder.Services.AddScoped<CategoriaRJService>();
 
-
-
 // JWT
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer(options =>
