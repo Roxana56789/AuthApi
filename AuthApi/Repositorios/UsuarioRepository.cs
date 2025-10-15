@@ -14,9 +14,9 @@ namespace AuthApi.Repositorios
             _context = context;
         }
 
-        public async Task<Usuario?> GetByEmailAsync(string email)
+        public async Task<Usuario>GetByEmailAsync(String Email)
         {
-            return await _context.Usuarios.Include(u => u.Rol).FirstOrDefaultAsync(u => u.Email == email);
+            return await _context.Usuarios.Include(u => u.Rol).FirstOrDefaultAsync(u => u.Email == Email);
         }
 
         public async Task<Usuario> AddAsync(Usuario usuario)
@@ -44,8 +44,7 @@ namespace AuthApi.Repositorios
 
         }
 
-
-
+       
     }
 
 }

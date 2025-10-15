@@ -8,5 +8,6 @@
         public string PasswordHash { get; set; } = "";
         public int RolId { get; set; }
         public Rol Rol { get; set; } = null!;
+        public string password { get; set; }
     }
 }
